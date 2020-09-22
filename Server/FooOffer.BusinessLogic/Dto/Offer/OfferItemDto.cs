@@ -7,7 +7,7 @@ namespace FooOffer.BusinessLogic.Dto.Offer
     [DataContract]
     public class OfferItemDto
     { 
-        [JsonPropertyName("service")]
+        [JsonPropertyName("alternative")]
         public AlternativeDto Alternative { get; set; }
         
         [JsonPropertyName("amount")]
@@ -20,7 +20,7 @@ namespace FooOffer.BusinessLogic.Dto.Offer
         {
             if (Alternative != null)
                 return Alternative.UnitPrice * Amount;
-
+        
             return 0;
         }
     }

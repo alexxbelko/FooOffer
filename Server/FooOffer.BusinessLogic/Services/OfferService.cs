@@ -35,17 +35,20 @@ namespace FooOffer.BusinessLogic.Services
         public async Task<OfferDto> CalculateOfferAsync(NewOfferDto offer)
         {
             if(offer == null)
-                throw new ArgumentNullException("Offer model is null.");
+                throw new ArgumentNullException("IOffer model is null.");
             
-            if(!offer.Services.Any())
+            if(!offer.Alternatives.Any())
                 throw new Exception("Services not set.");
             
             try
             {
+                var city = await _citiesService.GetCityByIdAsync(offer.CityId);
+                
                 var response = new OfferDto()
                 {
-                    City = (await _citiesService.GetCityByIdAsync(offer.CityId))?.Name,
-                    OfferItems = await SetOfferItemsAsync(offer.Services)
+                    City = city.Name,
+                    OfferItems = await SetOfferItemsAsync(offer.Alternatives, offer.MainServiceAmount),
+                    Currency = city.Currency
                 };
                 
                 return response;
@@ -56,18 +59,20 @@ namespace FooOffer.BusinessLogic.Services
             }
         }
 
-        private async Task<IEnumerable<OfferItemDto>> SetOfferItemsAsync(IEnumerable<OfferAlternativeDto> offerServices)
+        private async Task<IEnumerable<OfferItemDto>> SetOfferItemsAsync(IEnumerable<int> offerAlternativeIds, 
+            decimal mainServiceAmount)
         {
             try
             {
                 var offerItems = new List<OfferItemDto>();
 
-                foreach (var offerService in offerServices)
+                foreach (var alternativeId in offerAlternativeIds)
                 {
+                    var alternative = await _alternativeService.GetAlternativeByIdAsync(alternativeId);
                     offerItems.Add(new OfferItemDto
                     {
-                        Alternative = await _alternativeService.GetAlternativeByIdAsync(offerService.ServiceId),
-                        Amount = offerService.Amount
+                        Alternative = alternative,
+                        Amount = alternative.IsMainAlternative ? mainServiceAmount : 1
                     });
                 }
 

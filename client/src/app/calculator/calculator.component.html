@@ -1,0 +1,41 @@
+<p-panel id="query-options" header="Foo flyttstädning">
+  <div class="p-grid">
+    <div class="p-col">
+      <div class="p-field p-col-8 p-md-8">
+        <p-dropdown id="cities" [options]="cities" [(ngModel)]="selectedCity" (ngModelChange)="getAvalilableAlternatives()"
+                    placeholder="Välj stad" optionLabel="name" [showClear]="true">
+        </p-dropdown>
+        <p-inputNumber id="main-amount" [(ngModel)]="mainAlternativeAmount" mode="decimal" [showButtons]="true"
+                       inputId="minmax-buttons" [min]="1" placeholder="Ange antal m²"
+                       [inputStyleClass]="setMainAmountValidationClass()">
+        </p-inputNumber>
+
+        <button id="calculate-offer" pButton pRipple type="button" label="Beräkna offert"
+                class="p-button-outlined p-button-success"
+                (click)="calculateOffer()" *ngIf="availableAlternatives">
+        </button>
+      </div>
+    </div>
+    <div class="p-col">
+      <div id="alternatives" class="p-col-12 p-md-12">
+        <label><b>Tillval</b></label>
+        <form [formGroup]="form">
+          <div formArrayName="alt" *ngFor="let alternative of availableAlternatives; let i=index">
+            <div [formGroupName]="i">
+              <label>
+                <input formControlName="value" type="checkbox"
+                       [attr.disabled] = "availableAlternatives[i].value.isDisabled == '1' ? 'disabled' : null">
+                {{availableAlternatives[i].value.name}}
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="offer" id="offer">
+    <app-offer [offer]="offer"></app-offer>
+  </div>
+</p-panel>
+

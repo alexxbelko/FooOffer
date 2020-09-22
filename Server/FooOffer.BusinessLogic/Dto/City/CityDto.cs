@@ -6,10 +6,13 @@ namespace FooOffer.BusinessLogic.Dto.City
     [DataContract]
     public class CityDto
     {
-        [JsonPropertyName("value")]
+        [JsonPropertyName("id")]
         public int Id { get; set; }
        
-        [JsonPropertyName("label")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        [JsonPropertyName("currency")]
+        public string Currency { get; set; }
     }
 }

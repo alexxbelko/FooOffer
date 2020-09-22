@@ -11,11 +11,11 @@ namespace FooOffer.BusinessLogic.Dto.Offer
     public class OfferDto
     {
         [JsonPropertyName("offerDateTime")] 
-        public DateTime OfferDateTime => DateTime.UtcNow;
+        public DateTime OfferDateTime => DateTime.Now;
         
         [JsonPropertyName("city")]
         public string City { get; set; }
-        
+
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
         

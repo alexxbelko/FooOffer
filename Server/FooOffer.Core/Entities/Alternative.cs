@@ -21,6 +21,6 @@ namespace FooOffer.Core.Entities
         
         public decimal UnitPrice { get; set; }
 
-        public bool IncludedByDefault { get; set; } = false;
+        public bool IsMainAlternative { get; set; } = false;
     }
 }

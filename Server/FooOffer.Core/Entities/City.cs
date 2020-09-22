@@ -14,6 +14,9 @@ namespace FooOffer.Core.Entities
         [MaxLength(200)]
         public string Name { get; set; }
         
+        [MaxLength(5)]
+        public string Currency { get; set; }
+        
         public IEnumerable<Alternative> Services { get; set; }
     }
 }

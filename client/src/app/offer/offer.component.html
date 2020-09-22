@@ -1,0 +1,31 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th class="alternative-name">Tjänst</th>
+        <th>Antal</th>
+        <th>Enhet</th>
+        <th>Enhetspris</th>
+        <th>Summa</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let offerItem of offer.offerItems; index as i">
+        <th>{{ i + 1 }}</th>
+        <td class="alternative-name">{{ offerItem.alternative.name }}</td>
+        <td>{{ offerItem.amount }}</td>
+        <td>{{ offerItem.alternative.unit }}</td>
+        <td>{{ offerItem.alternative.unitPrice }}</td>
+        <td>{{ offerItem.sum }} {{offer.currency}}</td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td><b>Total</b></td>
+        <td><b>{{ offer.grandTotal}} {{offer.currency}}</b></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

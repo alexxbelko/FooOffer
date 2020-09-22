@@ -13,7 +13,7 @@ namespace FooOffer.BusinessLogic.Interfaces
         Task<CityDto> GetCityByIdAsync(int cityId);
         
         /// <summary>
-        /// Gets the available alternatives for a cityId
+        /// Gets the available availableAlternatives for a cityId
         /// </summary>
         /// <param name="cityId"></param>
         /// <returns>A collection of alternative details that are bookable</returns>

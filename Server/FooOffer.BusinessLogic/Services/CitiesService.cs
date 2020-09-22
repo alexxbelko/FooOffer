@@ -31,7 +31,8 @@ namespace FooOffer.BusinessLogic.Services
         {
             try
             {
-                var cities = await _cityRepository.GetAll();
+                var cities = (await _cityRepository.GetAll())
+                    .OrderBy(x => x.Name);
                 
                 return _mapper.Map<IEnumerable<CityDto>>(cities);
             }
@@ -55,7 +56,7 @@ namespace FooOffer.BusinessLogic.Services
         }
 
         /// <summary>
-        /// Gets the available alternatives for a cityId
+        /// Gets the available availableAlternatives for a cityId
         /// </summary>
         /// <param name="cityId"></param>
         /// <returns>A collection of alternative details that are bookable</returns>

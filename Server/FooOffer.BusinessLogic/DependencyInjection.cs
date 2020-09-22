@@ -13,12 +13,12 @@ namespace FooOffer.BusinessLogic
     {
         public static IServiceCollection SetupServices(this IServiceCollection services)
         {
-            //Add Transient Repositories
+            //Add Repositories
             services.AddTransient<CityRepository>();
             services.AddTransient<OfferRepository>();
             services.AddTransient<AlternativeRepository>();
 
-            //Setup AutoRegister services by attribute
+            //Setup AutoRegister by attribute
             services.RegisterAssemblyPublicNonGenericClasses()
                 .Where(c => c.Name.EndsWith("Service") && 
                             c.GetCustomAttributes<AutoRegisterServiceAttribute>().Any())

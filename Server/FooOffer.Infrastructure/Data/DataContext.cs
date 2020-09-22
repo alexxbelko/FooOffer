@@ -48,9 +48,9 @@ namespace FooOffer.Infrastructure.Data
                     Id = 1,
                     CityId = 1,
                     Name = "Flyttstädning",
-                    Unit = "m2",
+                    Unit = "m²",
                     UnitPrice = 65,
-                    IncludedByDefault = true
+                    IsMainAlternative = true
                 },
                 new Alternative
                 {
@@ -75,9 +75,9 @@ namespace FooOffer.Infrastructure.Data
                     Id = 4,
                     CityId = 2,
                     Name = "Flyttstädning",
-                    Unit = "m2",
+                    Unit = "m²",
                     UnitPrice = 55,
-                    IncludedByDefault = true
+                    IsMainAlternative = true
                 },
                 new Alternative
                 {
@@ -116,12 +116,14 @@ namespace FooOffer.Infrastructure.Data
                 new City
                 {
                     Id = 1,
-                    Name = "Stockholm"
+                    Name = "Stockholm",
+                    Currency = "KR"
                 },
                 new City
                 {
                     Id = 2,
-                    Name = "Uppsala"
+                    Name = "Uppsala",
+                    Currency = "KR"
                 }
             };
             

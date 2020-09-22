@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using FooOffer.BusinessLogic.Dto.Offer;
 using FooOffer.BusinessLogic.Interfaces;
@@ -22,7 +23,7 @@ namespace FooOffer.Api.Controllers.V1
         [ProducesResponseType( typeof(Exception), 500)]
         public async Task<IActionResult> CalculateOffer([FromBody] NewOfferDto offer)
         {
-            if (!ModelState.IsValid)
+            if (offer == null || offer.Alternatives == null)
                 return BadRequest($"Invalid model.");
             
             try

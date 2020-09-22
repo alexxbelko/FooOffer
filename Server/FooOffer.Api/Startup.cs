@@ -59,10 +59,9 @@ namespace FooOffer.Api
             }
             
             app.UseCors(builder => builder
-                .WithOrigins("https://localhost:8000", "http://localhost:8001")
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

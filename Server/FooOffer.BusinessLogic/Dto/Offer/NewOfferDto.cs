@@ -10,7 +10,10 @@ namespace FooOffer.BusinessLogic.Dto.Offer
         [JsonPropertyName("cityId")]
         public int CityId { get; set; }
 
-        [JsonPropertyName("services")]
-        public IEnumerable<OfferAlternativeDto> Services { get; set; }
+        [JsonPropertyName("alternatives")]
+        public IEnumerable<int> Alternatives { get; set; }
+
+        [JsonPropertyName("mainAlternativeAmount")]
+        public decimal MainServiceAmount { get; set; }
     }
 }

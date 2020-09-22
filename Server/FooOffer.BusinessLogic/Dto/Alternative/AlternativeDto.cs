@@ -6,10 +6,10 @@ namespace FooOffer.BusinessLogic.Dto.Alternative
     [DataContract]
     public class AlternativeDto
     {
-        [JsonPropertyName("value")]
+        [JsonPropertyName("key")]
         public int Id { get; set; }
         
-        [JsonPropertyName("label")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
         [JsonPropertyName("unit")]
@@ -18,7 +18,7 @@ namespace FooOffer.BusinessLogic.Dto.Alternative
         [JsonPropertyName("unitPrice")]
         public decimal UnitPrice { get; set; }
         
-        [JsonPropertyName("includedByDefault")]
-        public bool IncludedByDefault { get; set; }
+        [JsonPropertyName("value")]
+        public bool IsMainAlternative { get; set; }
     }
 }

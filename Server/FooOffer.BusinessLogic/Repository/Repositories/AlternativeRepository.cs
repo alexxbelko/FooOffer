@@ -20,7 +20,9 @@ namespace FooOffer.BusinessLogic.Repository.Repositories
         
         public async Task<IEnumerable<Alternative>> GetAvailableServicesByCityIdAsync(int cityId)
         {
-            return await _context.Alternatives.Where(x => x.CityId == cityId).ToListAsync();
+            return await _context.Alternatives.Where(x => x.CityId == cityId)
+                .OrderByDescending(x => x.IsMainAlternative)
+                .ToListAsync();
         }
     }
 }
